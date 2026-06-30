@@ -18,22 +18,11 @@ export default function AboutSection() {
         <div className="absolute bottom-[8%] right-[3%] sm:right-[6%] md:right-[10%] w-[130px] sm:w-[170px] md:w-[220px] pointer-events-none aspect-square rounded-[40px] opacity-40" style={{background:"linear-gradient(135deg, #646973, #B600A8)", filter:"blur(5px)"}} />
       </FadeIn>
 
-      <div className="flex flex-col items-center gap-10 sm:gap-12 md:gap-14 max-w-3xl">
+      <div className="flex flex-col items-center gap-10 sm:gap-14 md:gap-16 max-w-3xl">
         <FadeIn delay={0} y={40}>
           <h2 className="hero-heading font-black uppercase leading-none tracking-tight text-center" style={{ fontSize: "clamp(3rem, 12vw, 160px)" }}>
             About me
           </h2>
-        </FadeIn>
-
-        <FadeIn delay={0.1} y={30}>
-          <div className="flex flex-col items-center leading-none select-none">
-            <span className="hero-heading font-black uppercase" style={{ fontSize: "clamp(6rem, 25vw, 200px)", lineHeight: 0.8 }}>
-              D
-            </span>
-            <span className="text-[#D7E2EA] font-black uppercase tracking-tight text-center" style={{ fontSize: "clamp(2rem, 8vw, 70px)", lineHeight: 0.9, opacity: 0.8 }}>
-              eepak Bishnoi
-            </span>
-          </div>
         </FadeIn>
 
         <AnimatedText
@@ -42,7 +31,7 @@ export default function AboutSection() {
           style={{ fontSize: "clamp(1rem, 2vw, 1.35rem)" }}
         />
 
-        <div className="flex flex-col items-center gap-12 sm:gap-14 md:gap-16">
+        <div className="flex flex-col items-center gap-16 sm:gap-20 md:gap-24">
           <p className="text-[#D7E2EA]/60 text-xs sm:text-sm uppercase tracking-widest text-center">
             Freelancer Status · BCA Candidate · Direct Automation Deployment
           </p>
