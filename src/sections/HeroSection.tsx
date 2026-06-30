@@ -1,5 +1,4 @@
 import FadeIn from "../components/FadeIn";
-import Magnet from "../components/Magnet";
 import ContactButton from "../components/ContactButton";
 
 export default function HeroSection() {
@@ -14,12 +13,19 @@ export default function HeroSection() {
         </nav>
       </FadeIn>
 
-      <div className="flex-1 flex flex-col justify-center overflow-hidden">
+      <div className="flex-1 flex flex-col justify-center overflow-hidden px-6 md:px-10">
         <FadeIn delay={0.15} y={40}>
           <div className="overflow-hidden w-full">
-            <h1 className="hero-heading font-black uppercase tracking-tight leading-none whitespace-nowrap w-full text-[14vw] sm:text-[15vw] md:text-[16vw] lg:text-[17.5vw] mt-6 sm:mt-4 md:-mt-5">
-              Hi, i&apos;m Deepak
+            <h1 className="hero-heading font-black uppercase tracking-tight leading-none text-[14vw] sm:text-[15vw] md:text-[16vw] lg:text-[17.5vw] mt-6 sm:mt-4 md:-mt-5">
+              Deepak
             </h1>
+          </div>
+        </FadeIn>
+        <FadeIn delay={0.25} y={40}>
+          <div className="overflow-hidden w-full -mt-4 sm:-mt-6 md:-mt-10">
+            <h2 className="text-[#D7E2EA] font-black uppercase tracking-tight leading-none text-[8vw] sm:text-[9vw] md:text-[10vw] lg:text-[11vw] opacity-70">
+              Bishnoi
+            </h2>
           </div>
         </FadeIn>
       </div>
@@ -39,21 +45,6 @@ export default function HeroSection() {
           </a>
         </FadeIn>
       </div>
-
-      <FadeIn delay={0.6} y={30}>
-        <Magnet padding={150} strength={3} className="absolute left-1/2 -translate-x-1/2 z-10 w-[280px] sm:w-[360px] md:w-[440px] lg:w-[520px] top-1/2 -translate-y-1/2 sm:top-auto sm:translate-y-0 sm:bottom-0">
-          <div
-            className="w-full aspect-[3/4] rounded-[40px] flex items-center justify-center text-white font-black uppercase select-none"
-            style={{
-              background: "linear-gradient(145deg, #18011F 0%, #B600A8 40%, #7621B0 70%, #BE4C00 100%)",
-              boxShadow: "0 20px 60px rgba(182,0,168,0.3), inset 0 2px 4px rgba(255,255,255,0.1)",
-              fontSize: "clamp(6rem, 20vw, 12rem)",
-            }}
-          >
-            D
-          </div>
-        </Magnet>
-      </FadeIn>
     </section>
   );
 }
