@@ -1,3 +1,4 @@
+import { lazy, Suspense } from "react";
 import HeroSection from "./sections/HeroSection";
 import MarqueeSection from "./sections/MarqueeSection";
 import AboutSection from "./sections/AboutSection";
@@ -6,13 +7,16 @@ import ProjectsSection from "./sections/ProjectsSection";
 import SkillsSection from "./sections/SkillsSection";
 import SimulatorSection from "./sections/SimulatorSection";
 import ContactSection from "./sections/ContactSection";
-import ThreeBackground from "./components/ThreeBackground";
 import { ExternalLink } from "lucide-react";
+
+const ThreeBackground = lazy(() => import("./components/ThreeBackground"));
 
 export default function App() {
   return (
     <div className="relative" style={{ overflowX: "clip" }}>
-      <ThreeBackground />
+      <Suspense fallback={null}>
+        <ThreeBackground />
+      </Suspense>
       <HeroSection />
       <MarqueeSection />
       <AboutSection />

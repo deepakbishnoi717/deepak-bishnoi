@@ -42,12 +42,16 @@ export default function HeroSection() {
 
       <FadeIn delay={0.6} y={30}>
         <Magnet padding={150} strength={3} className="absolute left-1/2 -translate-x-1/2 z-10 w-[280px] sm:w-[360px] md:w-[440px] lg:w-[520px] top-1/2 -translate-y-1/2 sm:top-auto sm:translate-y-0 sm:bottom-0">
-          <img
-            src="https://shrug-person-78902957.figma.site/_components/v2/d24c01ad3a56fc65e942a1f501eb73db42d7cf9a/Rectangle_40443.81459862.png"
-            alt="Deepak"
-            className="w-full h-auto"
-            loading="eager"
-          />
+          <div
+            className="w-full aspect-[3/4] rounded-[40px] flex items-center justify-center text-white font-black uppercase select-none"
+            style={{
+              background: "linear-gradient(145deg, #18011F 0%, #B600A8 40%, #7621B0 70%, #BE4C00 100%)",
+              boxShadow: "0 20px 60px rgba(182,0,168,0.3), inset 0 2px 4px rgba(255,255,255,0.1)",
+              fontSize: "clamp(6rem, 20vw, 12rem)",
+            }}
+          >
+            D
+          </div>
         </Magnet>
       </FadeIn>
     </section>

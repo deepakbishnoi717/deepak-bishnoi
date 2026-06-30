@@ -69,7 +69,10 @@ function ParticleField({ count = 400 }) {
 export default function ThreeBackground() {
   return (
     <div className="fixed inset-0 -z-10 pointer-events-none">
-      <Canvas camera={{ position: [0, 0, 6], fov: 60 }}>
+      <Canvas
+        camera={{ position: [0, 0, 6], fov: 60 }}
+        style={{ pointerEvents: 'none' as any }}
+      >
         <ambientLight intensity={0.3} />
         <directionalLight position={[5, 5, 5]} intensity={0.8} />
         <directionalLight position={[-5, -5, -5]} intensity={0.4} />
