@@ -1,63 +1,106 @@
-import { useRef } from "react";
+import { useState, useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import LiveProjectButton from "../components/LiveProjectButton";
+
+function ss(url: string, w: number) {
+  return `https://image.thum.io/get/maxAge/12/width/${w}/${url}`;
+}
 
 const PROJECTS = [
   {
     num: "01",
     category: "Client",
     name: "IAS Coaching Centre",
-    col1img1: "https://images.higgs.ai/?default=1&output=webp&url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20260412_055344_5eff02e0-87a5-41ce-b64f-eb08da8f33db.png&w=1280&q=85",
-    col1img2: "https://images.higgs.ai/?default=1&output=webp&url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20260412_055431_11d841fd-8b41-46a5-82e4-b04f2407a7d8.png&w=1280&q=85",
-    col2img: "https://images.higgs.ai/?default=1&output=webp&url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20260412_055451_e317bf2d-28d4-48cc-86b0-6f72f25b6327.png&w=1280&q=85",
+    col1img1: ss("https://iascoachingcentre.vercel.app", 400),
+    col1img2: ss("https://iascoachingcentre.vercel.app", 400),
+    col2img: ss("https://iascoachingcentre.vercel.app/#why-hcs", 800),
     link: "https://iascoachingcentre.vercel.app/#why-hcs",
   },
   {
     num: "02",
     category: "Client",
     name: "Real Estate Demo",
-    col1img1: "https://images.higgs.ai/?default=1&output=webp&url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20260412_055654_911201c5-36d9-4bc6-bac7-331adfce159f.png&w=1280&q=85",
-    col1img2: "https://images.higgs.ai/?default=1&output=webp&url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20260412_055723_5ceda0b8-d9c2-4665-b2e3-83ba19ba76d1.png&w=1280&q=85",
-    col2img: "https://images.higgs.ai/?default=1&output=webp&url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20260412_055753_adc5dcbd-a8e6-49c0-b43a-9b030d835cea.png&w=1280&q=85",
+    col1img1: ss("https://realstatedemo-alpha.vercel.app", 400),
+    col1img2: ss("https://realstatedemo-alpha.vercel.app", 400),
+    col2img: ss("https://realstatedemo-alpha.vercel.app", 800),
     link: "https://realstatedemo-alpha.vercel.app/",
+
   },
   {
     num: "03",
     category: "Client",
     name: "Coaching Centre Demo",
-    col1img1: "https://images.higgs.ai/?default=1&output=webp&url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20260412_055759_963cfb0b-4bd1-4b0f-9d0a-09bd6cf95b2f.png&w=1280&q=85",
-    col1img2: "https://images.higgs.ai/?default=1&output=webp&url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20260412_060108_438f781a-9846-4dcc-89ab-c4e6cb830f5b.png&w=1280&q=85",
-    col2img: "https://images.higgs.ai/?default=1&output=webp&url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20260412_055818_9d062121-ad7e-46b9-999a-1a6a692ef1ee.png&w=1280&q=85",
+    col1img1: ss("https://coaching-centre-demo-bice.vercel.app", 400),
+    col1img2: ss("https://coaching-centre-demo-bice.vercel.app", 400),
+    col2img: ss("https://coaching-centre-demo-bice.vercel.app", 800),
     link: "https://coaching-centre-demo-bice.vercel.app/",
+
   },
   {
     num: "04",
     category: "Client",
     name: "Gym Demo",
-    col1img1: "https://images.higgs.ai/?default=1&output=webp&url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20260412_055344_5eff02e0-87a5-41ce-b64f-eb08da8f33db.png&w=1280&q=85",
-    col1img2: "https://images.higgs.ai/?default=1&output=webp&url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20260412_055431_11d841fd-8b41-46a5-82e4-b04f2407a7d8.png&w=1280&q=85",
-    col2img: "https://images.higgs.ai/?default=1&output=webp&url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20260412_055451_e317bf2d-28d4-48cc-86b0-6f72f25b6327.png&w=1280&q=85",
+    col1img1: ss("https://gymdemo-teal.vercel.app", 400),
+    col1img2: ss("https://gymdemo-teal.vercel.app", 400),
+    col2img: ss("https://gymdemo-teal.vercel.app", 800),
     link: "https://gymdemo-teal.vercel.app/",
+
   },
   {
     num: "05",
     category: "Client",
     name: "Amour Bistro",
-    col1img1: "https://images.higgs.ai/?default=1&output=webp&url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20260412_055654_911201c5-36d9-4bc6-bac7-331adfce159f.png&w=1280&q=85",
-    col1img2: "https://images.higgs.ai/?default=1&output=webp&url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20260412_055723_5ceda0b8-d9c2-4665-b2e3-83ba19ba76d1.png&w=1280&q=85",
-    col2img: "https://images.higgs.ai/?default=1&output=webp&url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20260412_055753_adc5dcbd-a8e6-49c0-b43a-9b030d835cea.png&w=1280&q=85",
+    col1img1: ss("https://amourbistro-dn3jy5rd.manus.space", 400),
+    col1img2: ss("https://amourbistro-dn3jy5rd.manus.space", 400),
+    col2img: ss("https://amourbistro-dn3jy5rd.manus.space", 800),
     link: "https://amourbistro-dn3jy5rd.manus.space/",
+
   },
   {
     num: "06",
     category: "Client",
     name: "Mehta Boot House",
-    col1img1: "https://images.higgs.ai/?default=1&output=webp&url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20260412_055759_963cfb0b-4bd1-4b0f-9d0a-09bd6cf95b2f.png&w=1280&q=85",
-    col1img2: "https://images.higgs.ai/?default=1&output=webp&url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20260412_060108_438f781a-9846-4dcc-89ab-c4e6cb830f5b.png&w=1280&q=85",
-    col2img: "https://images.higgs.ai/?default=1&output=webp&url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20260412_055818_9d062121-ad7e-46b9-999a-1a6a692ef1ee.png&w=1280&q=85",
+    col1img1: ss("https://mehtaboothouse.vercel.app", 400),
+    col1img2: ss("https://mehtaboothouse.vercel.app", 400),
+    col2img: ss("https://mehtaboothouse.vercel.app", 800),
     link: "https://mehtaboothouse.vercel.app/#about",
+
   },
 ];
+
+function ProjectImg({ src, alt, className, style }: any) {
+  const [failed, setFailed] = useState(false);
+  if (failed) {
+    return (
+      <div
+        className={className}
+        style={{
+          ...style,
+          background: "linear-gradient(135deg, #18011F, #B600A8)",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          color: "white",
+          fontWeight: 800,
+          fontSize: "clamp(0.8rem, 2vw, 1.5rem)",
+          textTransform: "uppercase",
+        }}
+      >
+        {alt || "Preview"}
+      </div>
+    );
+  }
+  return (
+    <img
+      src={src}
+      alt={alt || ""}
+      className={className}
+      style={style}
+      loading="lazy"
+      onError={() => setFailed(true)}
+    />
+  );
+}
 
 function ProjectCard({
   project,
@@ -111,27 +154,25 @@ function ProjectCard({
         </div>
         <div className="flex gap-3 sm:gap-4">
           <div className="flex flex-col gap-3 sm:gap-4 w-[40%]">
-            <img
+            <ProjectImg
               src={project.col1img1}
-              alt=""
-              className="w-full object-cover rounded-[40px] sm:rounded-[50px] md:rounded-[60px]"
-              style={{ height: "clamp(130px, 16vw, 230px)" }}
-              loading="lazy"
+              alt={project.name}
+              className="w-full rounded-[40px] sm:rounded-[50px] md:rounded-[60px]"
+              style={{ height: "clamp(130px, 16vw, 230px)", objectFit: "cover" }}
             />
-            <img
+            <ProjectImg
               src={project.col1img2}
-              alt=""
-              className="w-full object-cover rounded-[40px] sm:rounded-[50px] md:rounded-[60px]"
-              style={{ height: "clamp(160px, 22vw, 340px)" }}
-              loading="lazy"
+              alt={project.name}
+              className="w-full rounded-[40px] sm:rounded-[50px] md:rounded-[60px]"
+              style={{ height: "clamp(160px, 22vw, 340px)", objectFit: "cover" }}
             />
           </div>
           <div className="w-[60%]">
-            <img
+            <ProjectImg
               src={project.col2img}
-              alt=""
-              className="w-full h-full object-cover rounded-[40px] sm:rounded-[50px] md:rounded-[60px]"
-              loading="lazy"
+              alt={project.name}
+              className="w-full h-full rounded-[40px] sm:rounded-[50px] md:rounded-[60px]"
+              style={{ objectFit: "cover" }}
             />
           </div>
         </div>
